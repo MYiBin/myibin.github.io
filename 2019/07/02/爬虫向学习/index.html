@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="MYiBin" />
+
+
+
+<meta name="description" content="爬虫学习">
+<meta name="keywords" content="随缘">
+<meta property="og:type" content="article">
+<meta property="og:title" content="爬虫向">
+<meta property="og:url" content="https://myibin.github.io/2019/07/02/爬虫向学习/index.html">
+<meta property="og:site_name" content="MYiBin&#39;s Blog">
+<meta property="og:description" content="爬虫学习">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-07-10T09:54:10.584Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="爬虫向">
+<meta name="twitter:description" content="爬虫学习">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="MYiBin&#39;s Blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>爬虫向 | MYiBin&#39;s Blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: false
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/header.jpg" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">MYiBin</a></h1>
+        </hgroup>
+
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" href="#" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" href="#" title="GitHub"></a>
+                            
+                                <a class="fa Google" href="#" title="Google"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/">GitHub</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tag-Cloud/">Tag Cloud</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习/">学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随缘/">随缘</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">刚起步的码农</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">MYiBin</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/header.jpg" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">MYiBin</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" target="_blank" href="#" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
+                            
+                                <a class="fa Google" target="_blank" href="#" title="Google"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-爬虫向学习" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/07/02/爬虫向学习/" class="article-date">
+      <time datetime="2019-07-01T16:01:54.000Z" itemprop="datePublished">2019-07-02</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      爬虫向
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随缘/">随缘</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="博采众长，我们来看看其他人的爬虫是怎么学和用的："><a href="#博采众长，我们来看看其他人的爬虫是怎么学和用的：" class="headerlink" title="博采众长，我们来看看其他人的爬虫是怎么学和用的："></a>博采众长，我们来看看其他人的爬虫是怎么学和用的：</h2><p>爬虫文章 in 简书程序员专题：</p>
+<ol>
+<li>like:128 - Python 爬取落网音乐<br>● like:127 - 【图文详解】python爬虫实战——5分钟做个图片自动下载器<br>● like:97 - 用Python写一个简单的微博爬虫<br>● like:87 - 爬虫抓取拉勾网职位需求关键词，并生成统计图<br>● like:87 - Python爬虫实战（2）：爬取京东商品列表<br>● like:85 - python爬虫入门(1):爬万本书籍<br>● like:73 - Python爬虫(六)–Scrapy框架学习<br>● like:72 - Python爬虫(一)–豆瓣电影抓站小结(成功抓取Top100电影)<br>● like:63 - Python爬虫框架Scrapy快速入门<br>● like:62 - Scrapy爬取图片<br>● like:60 - 使用Node.js制作爬虫教程（续：爬图）<br>● like:59 - 使用Scrapy爬取大规模数据<br>● like:55 - 爬取简书全站文章并生成 API（一）<br>● like:49 - 教女朋友爬虫<br>● like:48 - 60小时Python爬虫学习：从100行数据到10W+数据<br>● like:48 - Python爬虫(七)–Scrapy模拟登录<br>● like:47 - 教你从零开始学会写爬虫（Python）<br>● like:46 - 基于MVP模式开发的带缓存网络爬虫,采用最流行框架搭建,干货多多<br>● like:46 - 【图文详解】scrapy安装与真的快速上手——爬取豆瓣9分榜单<br>● like:45 - Python爬虫初学（三）—— 模拟登录知乎<br>● like:45 - Python爬虫(二)–Coursera抓站小结<br>● like:44 - Python爬虫学习－大数据统计分析（基础）<br>● like:42 - 产品经理学Python&amp;爬虫（二）：Python基础及爬虫入门<br>● like:42 - 记一次斗鱼TV弹幕爬虫经历(Ruby版本)<br>● like:40 - 爬取简书全站文章并生成 API（二）<br>● like:40 - 33款开源爬虫软件工具 收藏！(你也试试）<br>● like:38 - python 爬取一些数据，存入数据库 并生成简单图表<br>● like:37 - Python爬虫之抓取APP下载链接<br>● like:37 - 网络蜘蛛的基本素养（python爬虫入门篇：介绍和原生库）<br>● like:37 - 斗鱼TV弹幕爬虫(Python版本)<br>● like:36 - 打造一条爬虫<br>● like:35 - Kali Linux Web 渗透测试秘籍 第三章 爬虫和蜘蛛<br>● like:35 - 【图文详解】scrapy爬虫与Ajax动态页面——爬取拉勾网职位信息（1）<br>● like:34 - 零基础制作一个Python 爬虫<br>● like:33 - Scrapy实战-爬取豆瓣漫画<br>● like:30 - Python即时网络爬虫项目: 内容提取器的定义<br>● like:30 - 使用Node.js制作爬虫教程<br>● like:30 - 【同行说技术】爬虫学习汇总：Python程序员从小白到大神必读资料汇总(二)<br>● like:29 - Python爬虫防封杀方法集合<br>● like:29 - 5.Python3爬虫入门实践——爬取名著<br>● like:29 - java爬虫之下载txt小说<br>● like:29 - Python 笔记七：Requests爬虫技巧<br>● like:29 - python爬虫:爬取慕课网视频<br>● like:29 - 【同行说技术】Python开发、调试、爬虫类工具大全<br>● like:27 - 最简便的爬虫效率提升方法<br>● like:26 - 一步步教你利用Github开源项目实现网络爬虫：以抓取证券日报新闻为例<br>● like:26 - Python自定义豆瓣电影种类，排行，点评的爬取与存储（高阶上）<br>● like:26 - Python爬取图虫网摄影作品<br>● like:26 - 如何做好一款爬虫产品(kimono,importio,八爪鱼试用分析)<br>● like:26 - 一天就能写 Python 爬虫<br>● like:26 - Python爬虫(四)–多线程<br>● like:25 - 爬虫框架webmagic与spring boot的结合使用<br>● like:23 - java简单的爬虫(今日头条)<br>● like:23 - 用Python爬取实习信息（Scrapy初体验）<br>● like:22 - 爬取百度图片各种狗狗的图片，使用caffe训练模型分类<br>● like:22 - 爬取简书全站文章并生成 API（五）<br>● like:22 - 爬取简书全站文章并生成 API（四）<br>● like:22 - 爬取简书全站文章并生成 API（三）<br>● like:22 - Python爬虫实战（4）：豆瓣小组话题数据采集—动态网页<br>● like:22 - Python爬虫(五)–多线程续(Queue)<br>● like:21 - 一个实现批量抓取淘女郎写真图片的爬虫<br>● like:21 - Python爬虫实战（3）：安居客房产经纪人信息采集<br>● like:21 - Scrapy爬取简书用户url分析<br>● like:21 - 【图文详解】scrapy爬虫与Ajax动态页面——爬取拉勾网职位信息（2）<br>● like:21 - 来，让我们写一个网络爬虫，下载页面上所有的照片吧！<br>● like:19 - node入门场景之——爬虫<br>● like:19 - python爬虫入门(2):让你的github项目火起来<br>● like:18 - 网络爬虫：使用Scrapy框架编写一个抓取书籍信息的爬虫服务<br>● like:18 - 专栏：006：实战爬取博客<br>● like:18 - 【开源】爬取QQ空间说说及简易数据分析<br>● like:17 - Python实现简单爬虫（爬取下载链接）<br>● like:17 - 教你一步一步用 Node.js 制作慕课网视频爬虫<br>● like:16 - python知乎爬虫（最新）<br>● like:16 - Python即时网络爬虫项目启动说明<br>● like:16 - 用Python爬取妹子图——基于BS4+多线程的处理<br>● like:16 - 教女朋友爬虫（续）<br>● like:15 - 爬虫学习之一个简单的网络爬虫<br>● like:15 - #Python爬虫手册（一）<br>● like:15 - 使用Python模拟腾讯第三方认证-篇4 [自动爬取分析及下载]<br>● like:15 - python 知乎爬虫<br>● like:14 - 通过网络图片小爬虫对比Python中单线程与多线（进）程的效率<br>● like:14 - 利用Beautifusoup爬取网页指定内容<br>● like:14 - 爬取网页 干货集中营 gank.io<br>● like:13 - 8.Python3爬虫实例——使用BeautifulSoup4重构爬取名著<br>● like:13 - Python爬虫：常用浏览器的useragent<br>● like:13 - Ruby+Tesseract爬取学校教务系统<br>● like:12 - 没壁纸用了？用Jsoup写一个图片爬虫吧！<br>● like:12 - 写一只”独立”的python爬虫-浅谈用爬虫自行抓取代理ip网站信息<br>● like:12 - 一个人人网python爬虫<br>● like:12 - 利用Node写一只小爬虫爬一爬简书<br>● like:12 - 爬虫抓取ruby-china职位分布图，含代码<br>● like:11 - Python爬虫初学（一）—— 爬取段子<br>● like:11 - Python爬虫-搜索并下载图片<br>● like:10 - 简书爬虫<br>● like:10 - 4.Python3爬虫入门<br>● like:10 - 爬虫学习之基于Scrapy的网络爬虫<br>● like:10 - python3.5爬虫辅助第三方库<br>● like:10 - python爬虫入门之模拟登陆新浪微博<br>● like:9 - 爬虫之刃—-赶集网招聘类爬取案例详解(系列四)<br>● like:9 - 9.Python3爬虫实例——使用Scrapy重构代码爬取名著<br>● like:9 - 从零开始开发一个App（1）- Scrapy爬虫<br>● like:9 - 简单爬取豆瓣妹子(Objective-C)<br>● like:9 - 人脑爬虫<br>● like:9 - python爬虫的最佳实践(八)–初探Scrapy<br>● like:9 - 爬取美少女图片<br>● like:9 - Tornado 4.3 文档翻译: 用户指南-并发网络爬虫<br>● like:9 - python爬虫入门之qq登陆初探<br>● like:8 - 为编写网络爬虫程序安装Python3.5<br>● like:8 - Python爬虫初学（二）—— 爬百度贴吧小说和图片<br>● like:8 - 10分钟利用JSoup和CSV爬取58同城二手房信息<br>● like:8 - 老堂主爬虫交流–百度贴吧模拟回帖<br>● like:8 - python爬虫-爬取盗墓笔记<br>● like:8 - Python爬虫-re(正则表达式)模块常用方法<br>● like:8 - 百度指数爬取工具<br>● like:7 - 原创爬虫开源项目——更新维护<br>● like:7 - Python异步爬虫试验[Celery,gevent,requests]<br>● like:7 - 网络爬虫: 从allitebooks.com抓取书籍信息并从amazon.com抓取价格(3): 根据书籍ISBN码抓取amazon.com价格<br>● like:7 - 网络爬虫: 从allitebooks.com抓取书籍信息并从amazon.com抓取价格(1): 基础知识Beautiful Soup<br>● like:7 - Python即时网络爬虫项目: 内容提取器的定义(Python2.7版本)<br>● like:7 - Python爬取三国演义<br>● like:7 - Python自定义豆瓣电影种类，排行，点评的爬取与存储（进阶下）<br>● like:7 - 小作品： Python QQ 群爬虫 (Update 2016-08-19)<br>● like:7 - 爬虫的理论知识储备<br>● like:7 - 豆瓣爬虫<br>● like:7 - py爬虫<br>● like:6 - 新手向爬虫（一）利用工具轻松爬取简书并分析<br>● like:6 - 第二个爬虫<br>● like:6 - Python爬虫爬取美剧网站<br>● like:6 - Python爬虫使用Selenium+PhantomJS抓取Ajax和动态HTML内容<br>● like:6 - python__运用爬虫猜密码<br>● like:5 - Pyspider框架 —— Python爬虫实战之爬取 V2EX 网站帖子<br>● like:5 - python3+sqlite3+多线程爬取某网站文章<br>● like:5 - 基于python的爬虫——espider<br>● like:5 - 基于scrapy框架的关于58同城招聘网站信息的爬取(一)<br>● like:5 - 简书连载作者福音: 一键生成连载目录和连载作品排行统计（Python爬虫应用）<br>● like:5 - nodejs网络爬虫技术详解<br>● like:5 - python__超级超级超级简单的一个爬虫小程序<br>● like:5 - 【HtmlUnit】网页爬虫进阶篇<br>● like:5 - python小爬虫抓取搞笑图片V2.0<br>● like:5 - python小爬虫抓取搞笑图片<br>● like:4 - python异步爬虫<br>● like:4 - Python自定义豆瓣电影种类，排行，点评的爬取与存储（进阶上）<br>● like:4 - 爬虫学习之基于Scrapy的自动登录<br>● like:4 - 浅析通用爬虫软件—— 集搜客与八爪鱼采集器<br>● like:4 - Laravel 下使用 Guzzle 编写多线程爬虫实战<br>● like:4 - Python小记：selenium+PhantomJS爬虫解决页面js添加cookie<br>● like:3 - 爬虫之scrapy-splash——scrapy+js渲染容器<br>● like:3 - python爬虫爬房多多链家房源信息<br>● like:3 - Python爬取FLASH播放器中的资料<br>● like:3 - Python即时网络爬虫：API说明<br>● like:3 - xiaolinBot（Twitter笑话集锦爬虫Bot） Step3－适配器<br>● like:3 - xiaolinBot（Twitter笑话集锦爬虫Bot） Step1－最简爬虫<br>● like:3 - 一个爬简书所有历史文章的爬虫<br>● like:2 - 网络爬虫: 从allitebooks.com抓取书籍信息并从amazon.com抓取价格(2): 抓取allitebooks.com书籍信息及ISBN码<br>● like:2 - Python: 爬取廖雪峰大神的python教程<br>● like:2 - 用爬虫抢自如房子<br>● like:2 - xiaolinBot（Twitter笑话集锦爬虫Bot） Step0－概述<br>● like:1 - 写爬小说的爬虫的一些心得<br>● like:1 - Python自定义豆瓣电影种类，排行，点评的爬取与存储（初级）<br>● like:0 - 新手向爬虫（二）——站点分析<br>● like:0 - 反爬虫策略<br>● like:0 - xiaolinBot（Twitter笑话集锦爬虫Bot） Step2－代码优化<br>使用Scrapy爬取上述列表<br>安装Scrapy<br>● 下载文件：lxml；twisted；并在该页面上搜索scrapy并下载whl文件，最后使用pip install x.whl，x为 whl文件名，依次安装三个文件。<br>● 我下载的都是cp35-cp35m-win_amd64.whl，win7安装成功。<br>简单快速的Scrapy<br>● 编辑名为num1.py的文件添加以下内容，使用命令行scrapy runspider num1.py -o 1.json在文件当前所在目录下运行文件，表示使用Scrapy执行该爬虫并将输出数据保存为json文件。<br>● 整个爬取过程花费了212.98秒，平均每个页面花费0.053秒。<h1 id="coding-utf-8"><a href="#coding-utf-8" class="headerlink" title="-- coding: utf-8 --"></a>-<em>- coding: utf-8 -</em>-</h1><h1 id="文本编辑器编码要设置对，最好为UTF-8无BOM编码"><a href="#文本编辑器编码要设置对，最好为UTF-8无BOM编码" class="headerlink" title="文本编辑器编码要设置对，最好为UTF-8无BOM编码"></a>文本编辑器编码要设置对，最好为UTF-8无BOM编码</h1>import scrapy</li>
+</ol>
+<p>class Num1Spider(scrapy.Spider):<br>    name = “num1” # 爬虫命名，在项目中有用<br>    allowed_domains = [“jianshu.com”] # 允许爬取的域名<br>    domain = ‘<a href="http://jianshu.com&#39;" target="_blank" rel="noopener">http://jianshu.com&#39;</a> # 自己设置的基础域名变量</p>
+<pre><code>headers = {
+    &quot;User-Agent&quot;:&quot;Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36&quot;,
+} # 请求头
+base_url = &apos;http://www.jianshu.com/collections/16/notes?order_by=added_at&amp;page=%d&apos;
+# 关于此处url，参看新手向爬虫（一）
+num = 0 # 页数
+
+def start_requests(self): # 默认的开始函数，用于提供要爬取的链接
+    # url = self.base_url % self.num
+    while self.num &lt; 4000: # 程序员专题总页数小于4000，共花费212.975027秒
+        self.num += 1
+        yield scrapy.Request(self.base_url % self.num,
+                         headers = self.headers,
+                         callback = self.parse)
+
+def parse(self, response):  # 默认的回调函数，用于链接下载完毕后调用来处理数据
+
+    for index,i in enumerate(response.css(&quot;.title a::text&quot;).extract()):
+        if &quot;爬虫&quot; in i or &quot;爬取&quot; in i:
+            like = response.css(&quot;a + span::text&quot;).extract()[index].replace(&apos; · 喜欢 &apos;, &apos;&apos;)
+            url = self.domain + response.css(&apos;.title a::attr(href)&apos;).extract()[index]
+            yield {&quot;title&quot; : i, &quot;like&quot;: like, &quot;url&quot;: url}
+</code></pre><p>######################## Debug ###############################        </p>
+<h1 id="from-scrapy-shell-import-inspect-response"><a href="#from-scrapy-shell-import-inspect-response" class="headerlink" title="from scrapy.shell import inspect_response"></a>from scrapy.shell import inspect_response</h1><h1 id="inspect-response-response-self"><a href="#inspect-response-response-self" class="headerlink" title="inspect_response(response, self)"></a>inspect_response(response, self)</h1><h1 id="将以上两句插入回调函数中任意位置，即可在运行过程中中断打开交互命令行，用于调试查看响应内容"><a href="#将以上两句插入回调函数中任意位置，即可在运行过程中中断打开交互命令行，用于调试查看响应内容" class="headerlink" title="将以上两句插入回调函数中任意位置，即可在运行过程中中断打开交互命令行，用于调试查看响应内容"></a>将以上两句插入回调函数中任意位置，即可在运行过程中中断打开交互命令行，用于调试查看响应内容</h1><p>######################## Run   ###############################       </p>
+<h1 id="scrapy-runspider-num1-py-o-1-json"><a href="#scrapy-runspider-num1-py-o-1-json" class="headerlink" title="scrapy runspider num1.py -o 1.json"></a>scrapy runspider num1.py -o 1.json</h1><p>文本后处理<br>  ● 用于从上一步生成的json文件中提取数据并排序生成简单的markdown。</p>
+<h1 id="coding-utf-8-1"><a href="#coding-utf-8-1" class="headerlink" title="-- coding: utf-8 --"></a>-<em>- coding: utf-8 -</em>-</h1><p>import json</p>
+<p>with open(‘1.json’,’r’) as f:<br>    data = json.load(f)<br>    data = sorted(data, key =lambda x: int(x[‘like’]), reverse=True)</p>
+<pre><code># 以喜欢数对文章进行排序
+with open(&apos;1.md&apos;, &apos;w&apos;) as m:
+    m.write(&apos;### 爬虫文章 in 简书程序员专题：\n&apos;)
+    for i in data:
+        m.write(&apos;- *like*:**{like}** - [{title}]({url})\n&apos;.format(**i))
+        # **i 表示解包字典
+</code></pre><p>Scrapy官方文档</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2019/07/02/爬虫向学习/">爬虫向</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">MYiBin</a></p>
+        <p><span>发布时间:</span>2019-07-02, 00:01:54</p>
+        <p><span>最后更新:</span>2019-07-10, 17:54:10</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2019/07/02/爬虫向学习/" title="爬虫向">https://myibin.github.io/2019/07/02/爬虫向学习/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://myibin.github.io/2019/07/02/爬虫向学习/　　作者: MYiBin" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2019/07/01/SSR/">
+                    Vultr一键搭建SSR
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#博采众长，我们来看看其他人的爬虫是怎么学和用的："><span class="toc-number">1.</span> <span class="toc-text">博采众长，我们来看看其他人的爬虫是怎么学和用的：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#coding-utf-8"><span class="toc-number"></span> <span class="toc-text">-- coding: utf-8 --</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#文本编辑器编码要设置对，最好为UTF-8无BOM编码"><span class="toc-number"></span> <span class="toc-text">文本编辑器编码要设置对，最好为UTF-8无BOM编码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#from-scrapy-shell-import-inspect-response"><span class="toc-number"></span> <span class="toc-text">from scrapy.shell import inspect_response</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#inspect-response-response-self"><span class="toc-number"></span> <span class="toc-text">inspect_response(response, self)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#将以上两句插入回调函数中任意位置，即可在运行过程中中断打开交互命令行，用于调试查看响应内容"><span class="toc-number"></span> <span class="toc-text">将以上两句插入回调函数中任意位置，即可在运行过程中中断打开交互命令行，用于调试查看响应内容</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#scrapy-runspider-num1-py-o-1-json"><span class="toc-number"></span> <span class="toc-text">scrapy runspider num1.py -o 1.json</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#coding-utf-8-1"><span class="toc-number"></span> <span class="toc-text">-- coding: utf-8 --</span></a>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"爬虫向　| MYiBin's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2019/07/01/SSR/" title="下一篇: Vultr一键搭建SSR">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/07/02/爬虫向学习/">爬虫向</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/07/01/SSR/">Vultr一键搭建SSR</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/21/test/">test</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/10/Hexo 最常用的几个命令/">Hexo 最常用的几个命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/10/为 Hexo 主题添加评论模块 — Disqus, 多说, 友言/">为 Hexo 主题添加评论模块 — Disqus, 多说, 友言</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/10/让 Hexo 自动生成 Tag Cloud 标签云页面/">让 Hexo 自动生成 Tag Cloud 标签云页面</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/08/将 Hexo 博客部署到 GitHub Pages/">将 Hexo 博客部署到 GitHub Pages</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/02/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/01/我的第一篇文章/">我的第一篇文章</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2019 MYiBin
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MYiBin <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+    <script>
+        var originTitle = document.title;
+        var titleTime;
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                document.title = "(つェ⊂) 我藏好了哦~ " + originTitle;
+                clearTimeout(titleTime);
+            }
+            else {
+                document.title = "(*´∇｀*) 被你发现啦~ " + originTitle;
+                titleTime = setTimeout(function() {
+                    document.title = originTitle;
+                }, 2000);
+            }
+        })
+    </script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
